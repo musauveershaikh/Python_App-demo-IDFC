@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<style>
+
+
+#termview {
+  background-color: #163B59
+}
+
+#dbview {
+  font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+  border: dotted white;
+  width: 100%;
+
+}
+
+#dbview th {
+  padding: 8px;
+  border: 1px solid white;
+
+}
+
+#dbview td {
+  border: 1px solid #ddd;
+  padding: 4px;
+}
+
+#dbview tr:nth-child(even){background-color: #f2f2f2;}
+
+#dbview tr:hover {background-color: #ddd;}
+
+#dbview th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #163B59;
+  color: white;
+}
+</style>
+  <section>
+    <div class="container" style="overflow-x:auto">
+      <div class="tile is-ancestor">
+        <div class="tile is-vertical is-parent">
+            <p class="title" style="font-family:gilmer-web,Gilmer,Geneva,Tahoma,Helvetica,Verdana,sans-serif;">Raw Database Results</p>
+            <p><font color="#363942">SELECT * FROM `employee_details@@@@`;</font></p>
+        </div>
+      </div>
+
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th>Company_ID</th>
+            <th>First_Name</th>
+            <th>Last_Name</th>
+            <th>Full_Name</th> 
+            <th>Date_of_Birth</th> 
+            <th>Date_of_Joining</th>
+            <th>Personal_Email_ID</th> 
+            <th>Grade_Code</th> 
+            <th>Product_Code</th> 
+            <th>Reporting_Manager_ID</th>  
+          </tr>
+        </thead>
+        <tbody>
+          {% for record in results %}
+          <tr>
+            <td>{{ record['Company_ID'] }}</td>
+            <td>{{ record['First_Name'] }}</td>
+            <td>{{ record['Last_Name'] }}</td>
+            <td>{{ record['Full_Name'] }}</td> 
+            <td>{{ record['Date_of_Birth'] }}</td> 
+            <th>{{ record['Date_of_Joining'] }}</th>
+            <td>{{ record['Personal_Email_ID'] }}</td> 
+            <td>{{ record['Grade_Code'] }}</td> 
+            <td>{{ record['Product_Code'] }}</td> 
+            <td>{{ record['Reporting_Manager_ID'] }}</td> 
+          </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+    </div>
+  </section>
+{% endblock %}

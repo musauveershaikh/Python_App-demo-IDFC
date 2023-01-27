@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p><br>
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-parent">
+      <p class="title" style="font-family:gilmer-web,Gilmer,Geneva,Tahoma,Helvetica,Verdana,sans-serif;">Application Data</p>
+      <p><font color="#363942">This table represents our application view.  Transit protects data "in motion" meaning that to users (and applications) the encryption and decryption is largely invisible.</font></p>
+  </div>
+</div>
+
+{% if record_added %}
+  <div class="notification is-success">
+    <button class="delete"></button>
+    Record successfully added
+  </div>
+{% endif %}
+
+{% if record_updated %}
+  <div class="notification is-info">
+    <button class="delete"></button>
+    Record successfully updated
+</div>
+{% endif %}
+
+  <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+    <thead>
+      <tr>
+        <th><abbr title="Company_ID">Company_ID#</th>
+        <th><abbr title="First_Name">First_Name#</th>
+        <th><abbr title="Last_Name">Last_Name#</th>
+        <th><abbr title="Full_Name">Full_Name#</th>
+        <th><abbr title="Date_of_Birth">Date_of_Birth#</th>
+        <th><abbr title="Personal_Email_ID">Personal_Email_ID#</th>
+        <th><abbr title="Date_of_Joining">Personal_Email_ID#</th>
+        <th><abbr title="Grade_Code">Grade_Code#</th>
+        <th><abbr title="Product_Code">Product_Code#</th>
+        <th><abbr title="Reporting_Manager_ID">Reporting_Manager_ID#</th>
+        </tr>
+    </thead>
+    <tbody>
+      {% for record in results %}
+      <tr>
+        <td>{{ record['Company_ID'] }}</td>
+        <td>{{ record['First_Name'] }}</td>
+        <td>{{ record['Last_Name'] }}</td>
+        <td>{{ record['Full_Name'] }}</td> 
+        <td>{{ record['Date_of_Birth'] }}</td> 
+        <td>{{ record['Personal_Email_ID'] }}</td> 
+        <td>{{ record['Date_of_Joining'] }}</td> 
+        <td>{{ record['Grade_Code'] }}</td> 
+        <td>{{ record['Product_Code'] }}</td> 
+        <td>{{ record['Reporting_Manager_ID'] }}</td> 
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+
+{% endblock %}
